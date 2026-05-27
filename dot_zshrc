@@ -1,0 +1,25 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n] confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+# control+y
+# fzf config import
+source <(fzf --zsh)
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}'"
+export FZF_ALT_C_OPTS=" 
+--walker-skip .git,node_modules,target
+--preview 'tree -C {}'"
+
+alias vi='nvim'
+export EDITOR='nvim'
+alias lg='lazygit'
+source  /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+# zsh_history_suggestion
+export ZSH_AUTOSUGGET_STRATEGY=(history completion)
+# zoxide init
+eval "$(zoxide init zsh)"
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+bindkey '^Y' autosuggest-accept
