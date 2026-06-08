@@ -1,0 +1,1 @@
+print("lazy plugin manager")

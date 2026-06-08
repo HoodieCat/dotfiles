@@ -1,0 +1,63 @@
+# XDG standard directories
+if [[ -z "XDG_CONFIG_HOME" ]]
+then 
+  export XDG_CONFIG_HOME="HOME/.config"
+fi
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export PATH="$HOME/.local/bin:$PATH"
+export EDITOR="nvim"
+#=========
+#
+#=========
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+HISTSIZE=100000
+SAVEHIST=100000
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+setopt NOBEEP
+setopt NUMERIC_GLOB_SORT
+#=========
+
+eval "$(zoxide init zsh)"
+
+#=========
+source "$ZDOTDIR/fzf.zsh"
+if command -v fd >/dev/null 2>&1; then
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden '
+fi
+# including hidden files
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
+export FZF_ALT_C_COMMAND="fd -td --follow --hidden"
+_TXT_FZF_PREVIEW_CMD='bat --color=always --style=plain,numbers --line-range=:500 {}'
+export FZF_CTRL_T_OPTS="--preview '$_TXT_FZF_PREVIEW_CMD'"
+export FZF_ALT_C_OPTS=" --preview 'tree -C {}'"
+_fzf_file_no_hidden_files() {
+  local cmd result
+  cmd="${FZF_DEFAULT_COMMAND/--hidden /}"
+  result=$(eval "${cmd:-find . -type f}" | fzf --preview "$_FZF_PREIVEW_CMD") \
+    && LBUFFER+="$result"
+  zle reset-prompt
+}
+zle -N _fzf_file_no_hidden_files
+source <(fzf --zsh)
+#=========
+
+alias vi='nvim'
+alias reload='source $ZDOTDIR/.zshrc'
+alias lg='lazygit'
+source  /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+# zsh_history_suggestion
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+# zoxide init
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+bindkey -e
+# emacs keybindings
+bindkey '^Y' autosuggest-accept
+bindkey '^f' _fzf_file_no_hidden_files
