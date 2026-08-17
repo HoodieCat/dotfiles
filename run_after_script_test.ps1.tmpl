@@ -1,0 +1,4 @@
+echo "hello, from windows/powershell"
+$source = Join-Path $(chezmoi source-path) "/dot_config/nvim"
+$target = Join-Pah $(chezmoi target-path) "/AppData/Local/nvim"
+New-Item -ItemType Junction $(Join-Path) $source $target

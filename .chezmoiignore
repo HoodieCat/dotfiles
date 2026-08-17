@@ -1,0 +1,12 @@
+README.md
+
+{{ if eq .chezmoi.os "linux" }}
+AppData/
+script_test.ps1
+AppData/**
+{{ end }}
+
+{{ if eq .chezmoi.os "windows" }}
+dot_config
+dot_config/**
+{{ end }}
