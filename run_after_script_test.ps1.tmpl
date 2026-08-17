@@ -1,6 +1,4 @@
 echo "hello, from windows/powershell"
 $source = Join-Path "{{ .chezmoi.sourceDir }}" "dot_config/nvim"
 $target = Join-Path "{{ .chezmoi.homeDir }}" "AppData/Local/nvim"
-if (-not (Test-Path $target)) {
-  New-Item -ItemType Junction -Path $source -Target $target
-}
+New-Item -ItemType Junction -target $source -path $target
