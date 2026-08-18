@@ -1,0 +1,290 @@
+general:
+  startup_commands: [ 'shell-exec yasb']
+  shutdown_commands: [ 'shell-exec taskkill /im yasb.exe /f']
+  config_reload_commands: []
+  focus_follows_cursor: false
+  toggle_workspace_on_refocus: false
+
+  cursor_jump:
+    enabled: true
+    trigger: 'window_focus'
+  hide_method: 'cloak'
+  show_all_in_taskbar: false
+
+gaps:
+  scale_with_dpi: true
+  inner_gap: '5px'
+  outer_gap:
+    top: '5px'
+    right: '0px'
+    bottom: '0px'
+    left: '0px'
+
+window_effects:
+  focused_window:
+    border:
+      enabled: true
+      color: '#ff4500'
+    hide_title_bar:
+      enabled: true
+
+    corner_style:
+      enabled: false
+      style: 'square'
+
+    transparency:
+      enabled: false
+      opacity: '100%'
+
+  other_windows:
+    border:
+      enabled: true
+      color: '#0000ff'
+    hide_title_bar:
+      enabled: true
+    corner_style:
+      enabled: false
+      style: 'rounded'
+    transparency:
+      enabled: false
+      opacity: '95%'
+
+window_behavior:
+  initial_state: 'tiling'
+  state_defaults:
+    floating:
+      centered: true
+      shown_on_top: false
+
+    fullscreen:
+      maximized: true
+      shown_on_top: false
+
+workspaces:
+  - name: '1'
+    display_name: "[Home]"
+    keep_alive: true
+
+  - name: '2'
+    display_name: "[Term]"
+
+  - name: '3'
+    display_name: "[Surf]"
+
+  - name: '4'
+    display_name: "[Edit]"
+
+  - name: '5'
+    display_name: "[Folder]"
+
+  - name: '6'
+    display_name: "[Time]"
+
+  - name: '7'
+    display_name: "[Game]"
+
+  - name: '8'
+    display_name: "[AI]"
+
+  - name: '9'
+    display_name: "[Focus]"
+
+window_rules:
+  - commands: ['ignore']
+    match:
+      - window_process: { equals: 'yasb' }
+      - window_title: { regex: '[Pp]icture.in.[Pp]icture|画中画' }
+        window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
+      - window_process: { equals: 'PowerToys' }
+        window_class: { regex: 'HwnRRRapper\[PowerToys\.PowerAccent.*?\]' }
+      - window_process: { equals: 'PowerToys' }
+        window_title: { regex: '.*? - Peek' }
+      - window_process: { equals: 'Lively' }
+        window_class: { regex: 'HwndWrapper' }
+      - window_class: { regex: "#32770" }
+      - window_process: { equals: 'uTools'}
+
+  - commands: ['toggle-floating --centered']
+    match:
+      - window_process: { equals: 'goldendict'}
+      - window_process: { equals: 'Clash Party'}
+      - window_process: { equals: 'winspy'}
+      - window_process: { equals: 'Weixin'}
+      - window_process: { equals: 'Battle'}
+      - window_process: { equals: 'old-Overwolf' }
+      - window_process: { equals: 'Overwolf' }
+
+  - commands: ['move --workspace 1', 'focus --workspace 1']
+    match:
+
+  - commands: ['move --workspace 2', 'focus --workspace 2']
+    match:
+      - window_process: { equals: 'WindowsTerminal'}
+      - window_process: { equals: 'wezterm-gui'}
+
+  - commands: ['move --workspace 3', 'focus --workspace 3']
+    match:
+      - window_process: { equals: 'msedge'}
+      - window_process: { equals: 'PowerToys'}
+        window_class: { equals: 'WinUIDesktopWin32WindowClass'}
+
+  - commands: ['move --workspace 5', 'focus --workspace 5']
+    match:
+      - window_process: { equals: 'explorer'}
+      - window_process: { equals: 'everything'}
+
+  - commands: ['move --workspace 4', 'focus --workspace 4']
+    match:
+      - window_process: { equals: 'Code'}
+      - window_process: { equals: 'Obsidian'}
+      - window_process: { equals: 'calibre'}
+
+  - commands: ['move --workspace 6', 'focus --workspace 6']
+    match:
+      - window_process: { equals: 'Spotify'}
+      - window_process: { equals: 'AppleMusic'}
+      - window_process: { equals: 'mpv' }
+      - window_process: { equals: 'Telegram'}
+      - window_process: { equals: 'quark'}
+
+  - commands: ['move --workspace 7']
+    match:
+      - window_process: { equals: 'Hearthstone'}
+
+  - commands: ['move --workspace 9']
+    match:
+      - window_process: { equals: 'ebook-viewer'}
+      - window_process: { equals: 'okular'}
+      - window_process: { equals: 'calibre-parallel'}
+
+  - commands: ['move --workspace 8']
+    match:
+      - window_process: { equals: 'ChatGPT' }
+      - window_title: { equals: 'Google AI Studio'}
+
+binding_modes:
+  - name: 'resize'
+    keybindings:
+      - commands: ['resize --width -2%']
+        bindings: ['h', 'left']
+      - commands: ['resize --width +2%']
+        bindings: ['l', 'right']
+      - commands: ['resize --height +2%']
+        bindings: ['k', 'up']
+      - commands: ['resize --height -2%']
+        bindings: ['j', 'down']
+      - commands: ['wm-disable-binding-mode --name resize']
+        bindings: ['escape', 'enter']
+
+keybindings:
+  # Shift focus in a given direction.
+  - commands: ['focus --direction left']
+    bindings: ['alt+h', 'alt+left']
+  - commands: ['focus --direction right']
+    bindings: ['alt+l', 'alt+right']
+  - commands: ['focus --direction up']
+    bindings: ['alt+k', 'alt+up']
+  - commands: ['focus --direction down']
+    bindings: ['alt+j', 'alt+down']
+
+  # Move focused window in a given direction.
+  - commands: ['move --direction left']
+    bindings: ['alt+shift+h', 'alt+shift+left']
+  - commands: ['move --direction right']
+    bindings: ['alt+shift+l', 'alt+shift+right']
+  - commands: ['move --direction up']
+    bindings: ['alt+shift+k', 'alt+shift+up']
+  - commands: ['move --direction down']
+    bindings: ['alt+shift+j', 'alt+shift+down']
+
+  - commands: ['wm-enable-binding-mode --name resize']
+    bindings: ['alt+r']
+
+  - commands: ['wm-toggle-pause']
+    bindings: ['alt+shift+p']
+
+  - commands: ['toggle-tiling-direction']
+    bindings: ['alt+v']
+
+  - commands: ['toggle-floating --centered']
+    bindings: ['control+alt+space']
+
+  - commands: ['toggle-tiling']
+    bindings: ['alt+t']
+
+  # Change the focused window to be fullscreen.
+  - commands: ['toggle-fullscreen']
+    bindings: ['control+alt+f']
+
+  # Minimize focused window.
+  - commands: ['toggle-minimized']
+    bindings: ['alt+shift+m']
+
+  # Close focused window.
+  - commands: ['close']
+    bindings: ['alt+shift+q']
+
+  # Kill GlazeWM process safely.
+  - commands: ['wm-exit']
+    bindings: ['alt+shift+e']
+
+  # Re-evaluate configuration file.
+  - commands: ['wm-reload-config']
+    bindings: ['alt+shift+r']
+
+  # # Redraw all windows.
+  - commands: ['wm-redraw']
+    bindings: ['alt+shift+w']
+
+  # Change focus to a workspace defined in `workspaces` config.
+  - commands: ['focus --workspace 1']
+    bindings: ['alt+1']
+  - commands: ['focus --workspace 2']
+    bindings: ['alt+2']
+  - commands: ['focus --workspace 3']
+    bindings: ['alt+3']
+  - commands: ['focus --workspace 4']
+    bindings: ['alt+4']
+  - commands: ['focus --workspace 5']
+    bindings: ['alt+5']
+  - commands: ['focus --workspace 6']
+    bindings: ['alt+6']
+  - commands: ['focus --workspace 7']
+    bindings: ['alt+7']
+  - commands: ['focus --workspace 8']
+    bindings: ['alt+8']
+  - commands: ['focus --workspace 9']
+    bindings: ['alt+9']
+
+  - commands: ['shell-exec wezterm-gui.exe']
+    bindings: ['alt+enter']
+  # Move the focused window's parent workspace to a monitor in a given
+  # direction.
+  - commands: ['move-workspace --direction left']
+    bindings: ['alt+shift+a']
+  - commands: ['move-workspace --direction right']
+    bindings: ['alt+shift+f']
+  - commands: ['move-workspace --direction up']
+    bindings: ['alt+shift+d']
+  - commands: ['move-workspace --direction down']
+    bindings: ['alt+shift+s']
+
+  # Move focused window to a workspace defined in `workspaces` config.
+  - commands: ['move --workspace 1', 'focus --workspace 1']
+    bindings: ['alt+shift+1']
+  - commands: ['move --workspace 2', 'focus --workspace 2']
+    bindings: ['alt+shift+2']
+  - commands: ['move --workspace 3', 'focus --workspace 3']
+    bindings: ['alt+shift+3']
+  - commands: ['move --workspace 4', 'focus --workspace 4']
+    bindings: ['alt+shift+4']
+  - commands: ['move --workspace 5', 'focus --workspace 5']
+    bindings: ['alt+shift+5']
+  - commands: ['move --workspace 6', 'focus --workspace 6']
+    bindings: ['alt+shift+6']
+  - commands: ['move --workspace 7', 'focus --workspace 7']
+    bindings: ['alt+shift+7']
+  - commands: ['move --workspace 8', 'focus --workspace 8']
+    bindings: ['alt+shift+8']
+  - commands: ['move --workspace 9', 'focus --workspace 9']
+    bindings: ['alt+shift+9']
