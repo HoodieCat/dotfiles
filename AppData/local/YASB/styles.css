@@ -1,0 +1,463 @@
+:root {
+    --rosewater: #f5e0dc;
+    --flamingo: #f2cdcd;
+    --pink: #f5c2e7;
+    --mauve: #cba6f7;
+    --red: #f38ba8;
+    --maroon: #eba0ac;
+    --peach: #fab387;
+    --yellow: #f9e2af;
+    --green: #a6e3a1;
+    --teal: #94e2d5;
+    --sky: #89dceb;
+    --sapphire: #74c7ec;
+    --blue: #89b4fa;
+    --lavender: #b4befe;
+    --text: #cdd6f4;
+    --subtext1: #bac2de;
+    --subtext0: #a6adc8;
+    --overlay2: #9399b2;
+    --overlay1: #7f849c;
+    --overlay0: #6c7086;
+    --surface2: #585b70;
+    --surface1: #45475a;
+    --surface0: #282936;
+    --base: #1e1e2e;
+    --mantle: rgba(24, 24, 37, 0.5);
+    --crust: rgba(17, 17, 27, 0.85);
+    --main: #10151d;
+}
+/* Global styles for ToolTip */
+QToolTip {
+    padding: 6px;
+    color: #cdd6f4;
+    font-size: 12px;
+    background-color: #1e1e2e;
+    border: 0px solid #313244;
+    border-radius: 6px;
+}
+* {
+    font-size: 15px;
+    color: var(--subtext0);
+    font-weight: 600;
+    font-family: "JetBrainsMono NFP";
+    margin: 0;
+    padding: 0;
+}
+.yasb-bar {
+    padding: 0;
+    margin: 0;
+    background-color: var(--crust);
+    border-radius: 8px;
+}
+.widget {
+    padding: 0 2;
+    margin: 0;
+}
+.icon {
+    font-size: 16;
+}
+.widget .label {
+    padding: 0px 2px;
+}
+.apps-widget .widget-container,
+.apps-widget {
+    padding: 0 4px 0 2px;
+}
+.apps-widget .label {
+    font-size: 14px;
+    padding: 0 2px;
+    color: var(--subtext0);
+}
+.apps-widget .label:hover {
+    color: var(--text);
+}
+
+.power-menu-widget .label {
+    color: #f38ba8;
+    font-size: 13px;
+}
+.power-menu-popup {
+    background-color: transparent
+}
+.power-menu-popup .button {
+    padding: 0;
+    width: 180px;
+    height: 230px;
+    border-radius: 8px;
+    background-color: var(--crust);
+    color: var(--text);
+    border-left: 4px solid rgba(58, 59, 83, 0);
+    border-right: 4px solid rgba(58, 59, 83, 0);
+    border-top: 4px solid rgba(58, 59, 83, 0);
+    border-bottom: 4px solid rgba(58, 59, 83, 0);
+    margin: 0px;
+}
+.power-menu-popup .button.hover {
+    background-color: var(--base);
+    border-left: 4px solid var(--base);
+    border-right: 4px solid var(--base);
+    border-top: 4px solid var(--base);
+    border-bottom: 4px solid var(--base);
+}
+
+.power-menu-popup .button .label {
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--overlay2)
+}
+.power-menu-popup .button .icon {
+    font-size: 64px;
+    padding-top: 32px;
+    color: var(--surface2)
+}
+
+.power-menu-popup .button.cancel .icon {
+    padding: 0;
+    margin: 0;
+}
+.power-menu-popup .button.cancel .label {
+    color: var(--red);
+    margin: 0;
+}
+.power-menu-popup .button.cancel {
+    height: 32px;
+    border-radius: 4px;
+}
+.uptime {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: var(--surface2);
+    font-weight: 600;
+}
+.microphone-widget {
+    padding: 0 6px 0 6px;
+}
+.microphone-widget .icon {
+    font-size: 18px;
+}
+.microphone-widget .icon {
+    color: var(--mauve);
+}
+.volume-widget .icon {
+    color: var(--blue);
+    margin: 1px 2px 0 0;
+    font-size: 15px;
+}
+.volume-widget .label{
+    font-size: 15px;
+}
+.volume-widget {
+    padding: 0 6px;
+}
+.media-widget {
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+}
+.media-widget .label {
+    color: #bac2db;
+    background-color: rgba(24, 24, 37, 0.7);
+    padding: 0px;
+    padding-right: 4px;
+    font-size: 12px;
+}
+.media-widget .label.maintext {
+    padding-top: 3px;
+}
+.media-widget .btn {
+    color: #989caa;
+    padding: 0 1px;
+    margin: 0;
+    font-family: Segoe Fluent Icons;
+    font-weight: 400;
+}
+.media-widget .btn:hover {
+    color: #babfd3;
+}
+.media-widget .btn.play {
+    font-size: 16px;
+}
+.media-widget .btn.disabled:hover,
+.media-widget .btn.disabled {
+    color: #4e525c;
+    font-size: 12px;
+    background-color: rgba(0, 0, 0, 0);
+}
+.home-widget {
+    padding: 0 4px 0 12px;
+}
+.home-widget .icon {
+    color: var(--lavender);
+}
+.home-widget .icon:hover {
+    color: var(--text);
+}
+.home-menu {
+    background-color: var(--crust);
+}
+.home-menu .menu-item {
+    padding: 8px 48px 9px 16px;
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
+    font-weight: 600;
+}
+.home-menu .menu-item:hover {
+    background-color: rgba(128, 130, 158, 0.15);
+    color: #fff;
+}
+.home-menu:separator {
+    height: 1px;
+    background-color: rgba(128, 130, 158, 0.3);
+}
+
+.taskbar-widget .app-container {
+    margin: 4px 2px;
+    border-radius: 4px;
+    padding: 0 4px;
+}
+.taskbar-widget .app-container.foreground {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.taskbar-widget .app-container.flashing {
+    background-color: rgba(255, 106, 106, 0.63);
+}
+.taskbar-widget .app-container .app-title {
+    padding-left: 4px;
+}
+/* Taskbar preview popup is very limited in styling options, do not use margins/paddings here */
+.taskbar-preview {
+    border-radius: 8px; 
+    background-color: #2b2c2d; 
+}
+.taskbar-preview.flashing { 
+    background-color: #7f434a;
+}
+.taskbar-preview .header {
+    padding-bottom: 12px;
+    padding-top: 4px;
+}
+.taskbar-preview .header .title {
+    color: #d6d6d6;
+    font-family: "Segoe UI";
+    font-weight: 600;
+    font-size: 13px;
+}
+.glazewm-workspaces {
+    margin: 0;
+}
+.glazewm-workspaces .ws-btn {
+    font-size: 15px;
+    background-color: transparent;
+    border: none;
+    padding: 5px 2px 4px 2px;
+    margin: 0;
+    color: #CDD6F4;
+    border-radius: 3px;
+}
+
+.glazewm-workspaces .ws-btn.active_populated {
+    color: var(--pink);
+    background-color: var(--crust);
+}
+.glazewm-workspaces .ws-btn.active_empty {
+    color: var(--subtext0);
+    background-color: #727272;
+}
+
+.glazewm-workspaces .ws-btn.populated {
+    color: #C2DAF7;
+}
+
+.glazewm-workspaces .ws-btn.empty {
+    color: #7D8B9D;
+}
+
+.glazewm-workspaces .ws-btn:hover,
+.glazewm-workspaces .ws-btn.populated:hover,
+.glazewm-workspaces .ws-btn.empty:hover {
+    background-color: #727272;
+}
+
+.language-widget .icon {
+    color: var(--pink);
+    font-size: 15px;
+}
+.language-widget .label {
+    color: var(--pink);
+    font-size: 15px;
+}
+.language-menu {
+    background-color: var(--crust);
+    min-width: 300px;
+}
+.language-menu .header {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    padding: 12px;
+}
+.language-menu .footer {
+    font-family: 'Segoe UI';
+    font-size: 12px;
+    font-weight: 600;
+    padding: 12px;
+    margin-top: 2px;
+    color: #9399b2;
+}
+.language-menu .footer:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.language-menu .language-item {
+    padding: 6px 12px;
+    margin: 2px 4px;
+}
+.language-menu .language-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+.language-menu .language-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.language-menu .language-item.active:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+.language-menu .language-item .code {
+    font-weight: 900;
+    font-size: 14px;
+    min-width: 40px;
+    text-transform: uppercase;
+}
+.language-menu .language-item .icon {
+    font-size: 16px;
+    margin-right: 8px;
+    color: #fff;
+}
+.language-menu .language-item .name {
+    font-weight: 600;
+    font-family: 'Segoe UI';
+    font-size: 14px;
+}
+.language-menu .language-item .layout {
+    font-weight: 600;
+    font-family: 'Segoe UI';
+    font-size: 12px;
+}
+.weather-card {
+    background-color: var(--crust);
+}
+.weather-card-today .label {
+    font-size: 13px;
+    font-weight: 600;
+}
+.weather-card-today .label.location {
+    font-size: 32px;
+    font-weight: 600;
+}
+.weather-card-today .label.alert {
+    font-size: 13px;
+    font-weight: 600;
+    background-color: rgba(247, 175, 42, 0.05);
+    border: 1px solid rgba(247, 209, 42, 0.1);
+    color: rgba(196, 181, 162, 0.85);
+    border-radius: 6px;
+    padding: 5px 0;
+}
+.weather-card-day {
+    border-radius: 6px;
+    background-color: var(--crust)
+}
+.weather-card-day .label {
+    font-size: 13px;
+
+}
+.weather-card-day.active {
+    background-color: rgba(40, 40, 60, 0.6);
+    border: 1px solid rgba(50, 50, 75, 1);
+}
+.weather-card-day:hover {
+    background-color: rgba(40, 40, 60, 0.6);
+}
+.weather-card .hourly-container {
+    border: none;
+    background-color: rgba(40, 40, 60, 0.0);
+    min-height: 150px;
+}
+.weather-card .hourly-data {
+    background-color: #FAE93F;
+    font-size: 11px;
+    font-weight: bold;
+}
+.systray {
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+.systray .button {
+    border-radius: 4px;
+    padding: 2px 2px;
+    background-color: transparent;
+}
+.systray .button:hover,
+.systray .unpinned-visibility-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+.systray .unpinned-visibility-btn {
+    height: 20px;
+    width: 16px;
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+}
+.systray .unpinned-visibility-btn:hover {
+    border-radius: 4px;
+}
+.battery-widget {
+    padding: 0 6px;
+}
+.battery-widget .label {
+    font-size: 15px;
+    color: #e0e0e0;
+}
+.battery-widget .icon {
+    font-size: 14px;
+    margin-right: 0px;
+}
+/* Critical - red */
+.battery-widget .icon.status-critical {
+    color: #ff4444;
+}
+.battery-widget .label.status-critical {
+    color: #ff6b6b;
+}
+/* Low - orange */
+.battery-widget .icon.status-low {
+    color: #ff9800;
+}
+.battery-widget .label.status-low {
+    color: #ffb74d;
+}
+/* Medium - yellow */
+.battery-widget .icon.status-medium {
+    color: #ffc107;
+}
+/* High - light green */
+.battery-widget .icon.status-high {
+    color: #8bc34a;
+}
+/* Full - green */
+.battery-widget .icon.status-full {
+    color: #4caf50;
+}
+/* Charging - cyan */
+.battery-widget .icon.status-charging {
+    color: #00bcd4;
+}
+.battery-widget .label.status-charging {
+    color: #4dd0e1;
+}
