@@ -33,6 +33,10 @@ function which{
 	(Get-Command $args[0]).source
 }
 
+function gst{
+	git status
+}
+
 # fzf wrapper
 Set-PSReadlineKeyHandler -Key 'Ctrl+t' -ScriptBlock {
 	$command = 'fd -tf -I --hidden  --exclude .cache --exclude node_modules --exclude .git --exclude .vscode 2>$null | fzf --tiebreak=length --border --preview "bat -n --color=always {}" --bind "ctrl-h:backward-delete-char"'

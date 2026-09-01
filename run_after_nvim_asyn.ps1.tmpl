@@ -1,10 +1,6 @@
 $source = Join-Path "{{ .chezmoi.sourceDir }}" "dot_config/nvim"
 $target = Join-Path "{{ .chezmoi.homeDir }}" "AppData/Local/nvim"
 if ( $(Test-Path $target) )
-{
-	Remove-Item $target
-	New-Item -ItemType Junction -target $source -path $target
-}
 else
 {
 	New-Item -ItemType Junction -target $source -path $target
