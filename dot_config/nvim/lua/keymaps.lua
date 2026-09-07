@@ -62,6 +62,14 @@ map('n', 'cc', function()
 	end
 end, opts )
 
+map('n', 'cp', function()
+	local file_name = vim.fn.expand('%:p:h')
+	if file_name then
+		vim.fn.setreg('+', file_name)
+	end
+end, opts )
+
+
 -- flash integration
 map('n','r', function()
 	if pcall(require,'flash') then

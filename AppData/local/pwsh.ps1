@@ -13,6 +13,9 @@ oh-my-posh init pwsh --config "~/AppData/Local/oh-my-posh-theme/mytheme.omp.json
 Set-Alias lg lazygit
 Set-Alias vi nvim
 Set-Alias omp oh-my-posh
+function ll { eza -a }
+Set-Alias ls eza
+
 if(Test-Path alias:pwd) {Remove-Item alias:pwd}
 function pwd {
 	$(Get-Location).Path
