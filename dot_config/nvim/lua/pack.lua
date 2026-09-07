@@ -13,7 +13,7 @@ if call"catppuccin" then
 			aerial = true,
 		}
 	})
-	vim.cmd.colorscheme"catppuccin-macchiato"
+	vim.cmd.colorscheme"catppuccin-mocha"
 end
 
 if call"aerial" then 
