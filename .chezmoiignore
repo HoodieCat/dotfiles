@@ -1,5 +1,4 @@
 README.md
-/**/nvim-pack-lock.json
 
 {{ if eq .chezmoi.os "linux" }}
 AppData/
