@@ -1,11 +1,6 @@
-{{ if eq .chezmoi.os "linux" }}
-{{ end }} 
-
-
-{{ if eq .chezmoi.os "windows" }}
+#!/usr/bash
 source="{{- .chezmoi.sourceDir -}}/dot_config/nvim"
 target="{{- .chezmoi.homeDir -}}/AppData/local/nvim"
 if [ ! -d "$target" ]; then
 	ln -s "$source" "$target"
 fi
-{{ end }}
