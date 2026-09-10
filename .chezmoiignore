@@ -1,18 +1,16 @@
 README.md
 
 {{ if eq .chezmoi.os "linux" }}
-run_after_nvim_asy.ps1.tmpl
+run_after_nvim_asy.ps1
 AppData/
-script_test.ps1
 AppData/**
 {{ end }}
 
 {{ if eq .chezmoi.os "windows" }}
-run_after_nvim_asy.sh.tmpl
+run_after_nvim_asy.sh
 !dot_config/opencode/tui.json
 dot_config/
 dot_config/**
 !dot_config/opencode/tui.json
 AppData/**/YASB/yasb.log
-
 {{ end }}

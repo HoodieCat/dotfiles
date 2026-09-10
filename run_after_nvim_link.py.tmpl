@@ -1,0 +1,12 @@
+from pathlib import path
+import os
+
+source = Path(r"{{- .chezmoi.sourceDir -}}" / "dot_config" / "nvim"
+{{ if eq  .chezmoi.os  "windows" }}
+target = Path(r"{{- .chezmoi.homeDir -}}" / "AppData" / "Local" / "nvim"
+{{ elseif eq .chezmoi.os "linux" }}
+target = Path(r"{{- .chezmoi.homeDir -}}" / ".config" / "nvim"
+{{ end }}
+
+if not target.exists():
+	os.symlink(source, target, target_is_directory = true )
