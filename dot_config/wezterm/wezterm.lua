@@ -81,4 +81,6 @@ config.launch_menu = {
 require('tabs')(wezterm, config)
 require('appearance')(wezterm, config)
 require('window')(wezterm, config)
+require('mux')(wezterm, config)
+
 return config

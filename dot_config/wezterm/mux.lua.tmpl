@@ -1,0 +1,19 @@
+# linux part
+{{ if eq .chezmoi.os "linux" }}
+config.unix_domains = {
+	{
+		name = 'wsl',
+		socket_path = '/mnt/c/Users/lijie/.local/share/wezterm/sock',
+		skip_permissions_check = true,
+	},
+}
+
+# widnows 
+{{ else if eq .chezmoi.os "windows" }}
+config.unix_domains = {
+	{
+		name = 'wsl',
+		serve_command = { 'wsl', 'wezterm-mux-server', '--daemonize' },
+	},
+}
+{{ end }}
