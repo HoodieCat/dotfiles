@@ -1,4 +1,5 @@
-{{ if eq .chezmoi.os "linux" }}
+return function(wezterm, _)
+{{- if eq .chezmoi.os "linux" -}}
 config.unix_domains = {
 	{
 		name = 'wsl',
@@ -7,11 +8,12 @@ config.unix_domains = {
 	},
 }
 
-{{ else if eq .chezmoi.os "windows" }}
+{{- else if eq .chezmoi.os "windows" -}}
 config.unix_domains = {
 	{
 		name = 'wsl',
 		serve_command = { 'wsl', 'wezterm-mux-server', '--daemonize' },
 	},
 }
-{{ end }}
+{{- end -}}
+end
