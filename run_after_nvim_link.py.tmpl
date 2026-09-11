@@ -9,4 +9,5 @@ target = Path(r"{{- .chezmoi.homeDir -}}") / ".config" / "nvim"
 {{ end }}
 
 if not target.exists():
+	os.makedirs( target , exist_ok = True )
 	os.symlink(source, target, target_is_directory = True )

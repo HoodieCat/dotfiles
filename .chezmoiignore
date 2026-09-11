@@ -8,8 +8,5 @@ AppData/**/*
 
 {{ if eq .chezmoi.os "windows" }}
 !.config/opencode/tui.json
-.config/
-.config/**
-!.config/opencode/tui.json
-AppData/**/YASB/yasb.log
+.config/**/*
 {{ end }}
