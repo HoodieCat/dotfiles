@@ -20,7 +20,7 @@ if(Test-Path alias:pwd) {Remove-Item alias:pwd}
 function pwd {
 	$(Get-Location).Path
 }
-$env:FZF_DEFAULT_OPTS = "--bind 'ctrl-h:backward-delete-char'"
+# $env:FZF_DEFAULT_OPTS = "--bind 'ctrl-h:backward-delete-char'"
 # yazi
 function y {
 	$tmp = [System.IO.Path]::GetTempFileName()

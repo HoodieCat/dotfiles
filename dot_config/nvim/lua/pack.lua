@@ -5,6 +5,7 @@ vim.pack.add {
 	{ src = "https://github.com/akinsho/toggleterm.nvim",  name = "toggleterm"},
 	{ src = "https://github.com/stevearc/aerial.nvim", name = "aerial"},
 	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
+	{ src = "https://github.com/iamcco/markdown-preview.nvim", name = "markdown-preview" },
 }
 
 if call"catppuccin" then
@@ -27,4 +28,3 @@ if call"aerial" then
 			vim.keymap.set('n', '}', "<cmd>AerialNext<CR>")
 		end})
 end
-
