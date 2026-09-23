@@ -113,6 +113,7 @@ window_rules:
       - window_process: { equals: 'Battle'}
       - window_process: { equals: 'old-Overwolf' }
       - window_process: { equals: 'Overwolf' }
+      - window_process: { equals: 'clash-verge' }
 
   - commands: ['move --workspace 1', 'focus --workspace 1']
     match:
