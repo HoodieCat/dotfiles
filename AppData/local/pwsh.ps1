@@ -20,7 +20,7 @@ if(Test-Path alias:pwd) {Remove-Item alias:pwd}
 function pwd {
 	$(Get-Location).Path
 }
-# $env:FZF_DEFAULT_OPTS = "--bind 'ctrl-h:backward-delete-char'"
+$env:FZF_DEFAULT_OPTS = "--bind 'ctrl-h:backward-delete-char'"
 # yazi
 function y {
 	$tmp = [System.IO.Path]::GetTempFileName()
@@ -42,7 +42,7 @@ function gst{
 
 # fzf wrapper
 Set-PSReadlineKeyHandler -Key 'Ctrl+t' -ScriptBlock {
-	$command = 'fd -tf -I --hidden  --exclude .cache --exclude node_modules --exclude .git --exclude .vscode 2>$null | fzf --tiebreak=length --border --preview "bat -n --color=always {}" --bind "ctrl-h:backward-delete-char"'
+	$command = 'fd -tf -I --hidden  --exclude .cache --exclude node_modules --exclude .git --exclude .vscode 2>$null | fzf --tiebreak=length --border --preview "bat -n --color=always {}" '
 		try{
 			$result = Invoke-Expression $command
 				if($result){
@@ -54,7 +54,7 @@ Set-PSReadlineKeyHandler -Key 'Ctrl+t' -ScriptBlock {
 }
 
 Set-PSReadLineKeyHandler -Key 'Alt+c' -ScriptBlock {
-	$command = 'fd -td -tl --hidden --exclude .git --exclude node_modules --no-ignore --exclude undo --exclude swap 2>$null | fzf --scheme=PATH --border --preview "tre {}" --bind "ctrl-h:backward-delete-char" '
+	$command = 'fd -td -tl --hidden --exclude .git --exclude node_modules --no-ignore --exclude undo --exclude swap 2>$null | fzf --scheme=PATH --border --preview "tre {}" '
 		try{
 			$result = Invoke-Expression $command
 				if ($result){
@@ -70,7 +70,7 @@ Set-PSReadLineKeyHandler -Key 'Alt+c' -ScriptBlock {
 Set-PSReadLineKeyHandler -Key 'Ctrl+r' -ScriptBlock {
 	$initQuery = [Microsoft.Powershell.PSConsoleReadLine]::InputLine
 		$historyPath = (Get-PSReadLineOption).HistorySavePath
-		$command = "Get-Content '$historyPath' -ErrorAction SilentlyContinue | Select-Object -Unique | fzf --no-sort --tac --prompt='History>' --scheme=history --query '$initQuery' --bind 'ctrl-h:backward-delete-char' "
+		$command = "Get-Content '$historyPath' -ErrorAction SilentlyContinue | Select-Object -Unique | fzf --no-sort --tac --prompt='History>' --scheme=history --query '$initQuery' "
 		try{
 			$result = Invoke-Expression $command
 				if($result){

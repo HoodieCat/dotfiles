@@ -8,7 +8,7 @@ config.font = wezterm.font{
 	weight = 'Bold',
 }
 config.audible_bell = "Disabled"
-config.font_size = 15.0
+config.font_size = 18
 config.window_decorations = 'RESIZE'
 config.color_scheme = 'Catppuccin Mocha'
 config.default_cursor_style = 'BlinkingBlock'
@@ -30,6 +30,7 @@ config.keys = {
   { key = 't', mods = 'CTRL|ALT', action = act.SpawnTab('DefaultDomain') },
   { key = 't', mods = 'LEADER', action = act.SpawnTab('CurrentPaneDomain') },
   { key = 'x', mods = 'LEADER', action = act.CloseCurrentPane({ confirm = false }) },
+	{ key = 'f', mods = 'LEADER', action = act.ToggleFullScreen },
   --if directly close lase pane on last tab , collapse on Windows OS
   {
     key = 'x',
@@ -82,5 +83,46 @@ require('tabs')(wezterm, config)
 require('appearance')(wezterm, config)
 require('window')(wezterm, config)
 require('mux')(wezterm, config)
+local io = require('io')
+local os = require('os')
+
+wezterm.on('trigger-vim-with-scrollback', function(window, pane)
+  -- Retrieve the text from the pane
+  local text = pane:get_lines_as_text(pane:get_dimensions().scrollback_rows)
+
+  -- Create a temporary file to pass to vim
+  local name = os.tmpname()
+  local f = io.open(name, 'w+')
+  if f then
+    f:write(text)
+    f:flush()
+    f:close()
+  end
+
+  -- Open a new window running vim and tell it to open the file
+  window:perform_action(
+    act.SpawnCommandInNewWindow({
+      args = { 'vim', name },
+    }),
+    pane
+  )
+
+  -- Wait "enough" time for vim to read the file before we remove it.
+  -- The window creation and process spawn are asynchronous wrt. running
+  -- this script and are not awaitable, so we just pick a number.
+  --
+  -- Note: We don't strictly need to remove this file, but it is nice
+  -- to avoid cluttering up the temporary directory.
+  wezterm.sleep_ms(1000)
+  os.remove(name)
+end)
+
+  keys = {
+    {
+      key = 'E',
+      mods = 'CTRL',
+      action = act.EmitEvent('trigger-vim-with-scrollback'),
+    },
+  }
 
 return config
