@@ -7,7 +7,7 @@ Set-PSReadLineKeyHandler -Key 'Ctrl+n' -Function HistorySearchForward
 Set-PSReadlineKeyHandler -Key 'Ctrl+y' -Function AcceptSuggestion
 Set-PSReadLineKeyHandler -Key 'Ctrl+q' -Function TabCompleteNext
 #oh-my-posh
-oh-my-posh init pwsh --config "~/AppData/Local/oh-my-posh-theme/mytheme.omp.json"| Invoke-Expression
+oh-my-posh init pwsh --config "~/AppData/Local/mytheme.omp.json"| Invoke-Expression
 
 #alias
 Set-Alias lg lazygit

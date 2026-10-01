@@ -6,6 +6,8 @@ vim.pack.add {
 	{ src = "https://github.com/stevearc/aerial.nvim", name = "aerial"},
 	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 	{ src = "https://github.com/iamcco/markdown-preview.nvim", name = "markdown-preview" },
+	{ src = "https://github.com/iamcco/markdown-preview.nvim", name = "markdown-preview" },
+	{ src = "https://github.com/catgoose/nvim-colorizer.lua", name = "colorizer" },
 }
 
 if call"catppuccin" then
@@ -27,4 +29,8 @@ if call"aerial" then
 			vim.keymap.set('n', '{', "<cmd>AerialPre<CR>")
 			vim.keymap.set('n', '}', "<cmd>AerialNext<CR>")
 		end})
+end
+
+if call"colorizer" then
+	require("colorizer").setup()
 end
